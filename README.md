@@ -14,14 +14,19 @@ Name : Karan Venkatesh Davanam (kdavan2)
 * There were five tasks to complete as part of this homework and the respective class names are given below:
 
        1) top ten published authors at each venue - AuthorVenueCount
+       
        2) list of authors who published without interruption for N years where 10 <= N - AuthorConsecutiveYears
+       
        3) list of publications that contains only one author - PublicationSingleAuthor
+       
        4) list of publications for each venue that contain the highest number of authors for each of these venues - PublicationWithHighestAuthors
+       
        5) list of top 100 authors in the descending order who publish with most co-authors and the list of 100 authors who publish without any co-authors - CoAuthorCount
        
 * In my application.conf I have set both the input and output path. After each run delete the output folder to avoid error during runtime. The path represents path in HDFS file-system and it holds good for both AWS EMR and HDP sandbox.
 
        1) jobInputPath=/home/hadoop/input (should be created by user in HDFS) 
+       
        2) jobOutputPath=/home/hadoop/output (code creates the output folder , but user should delete after collecting the results{csv files} after each run)
        
 * While running  jar file please note that it does not take any input arguements. 
