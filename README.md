@@ -148,6 +148,8 @@ Name : Karan Venkatesh Davanam (kdavan2)
 ### Future Improvements
 
     - Should improve the code that writes the data into CSV file now I'm using input IOUtils
+    
+### Output CSV for each job for dblp.xml dataset is present in result.zip     
        
    
 
