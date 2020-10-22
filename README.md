@@ -103,8 +103,25 @@ Name : Karan Venkatesh Davanam (kdavan2)
        
        2) These csv are getting created by the utility method writeCsv(), it is collecting the outputs of a particular job and writing it to a single csv file for each map-reduce job
        
-          
+### Description of mapper and reducer of each job          
 
+
+1)  author_consecutive_years (AuthorConsecutiveYears)
+
+     - Map : The function inside the mapper class emits (author,year) year is the publication year. The getAuthorList gets the author list for each element and getPublicationYear gets the publication year. Then by iterating through the author list each author is tagged to the year value.
+     
+     - Reduce: For each author key  a reducer will be created and the list of years that is tagged to each author is iterated using foreach to list of consecutive years. (>=10)
+
+2)   author_venue_count (AuthorVenueCount)
+
+     - Map : The map emits (venue,author)
+     
+     - Reduce: So foreach venue a reducer is created. The reducer will receive a list of authors as value and venue as key. Using hashmap the author and the number of times he/she appear in the list is stored. The hashmap is sorted in descending order and top 10 authors from each venue is retrieved.
+     
+3)  
+
+       
+   
 
   
        
