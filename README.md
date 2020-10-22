@@ -116,10 +116,38 @@ Name : Karan Venkatesh Davanam (kdavan2)
 
      - Map : The map emits (venue,author)
      
-     - Reduce: So foreach venue a reducer is created. The reducer will receive a list of authors as value and venue as key. Using hashmap the author and the number of times he/she appear in the list is stored. The hashmap is sorted in descending order and top 10 authors from each venue is retrieved.
+     - Reduce: So foreach venue key a reducer is created. The reducer will receive a list of authors as value and venue as key. Using hashmap the author and the number of times he/she appear in the list is stored. The hashmap is sorted in descending order and top 10 authors from each venue is retrieved.
      
-3)  
+3)  publication_single_author (PublicationSingleAuthor)
 
+     - Map : The map emits (venue,publicationtitle) , the publication title is value from the title for elements having only one author or editor tag.
+     
+     - Reduce : For each venue key a reducer is created and the list of publication list is iterated over to emit (venue,title)
+     
+4)  publications_with_highest_authors (PublicationWithHighestAuthor)
+
+     - Map : The map emits (venue,publicationtitle), the publicationtile List is returned from getPublicationList() and this list is created based on number of author tags in each element. So if there are three author tag the publicationList will have the same title 3 times. Then this list is iterated over to emit (venue,title)
+     
+     - Reduce : For each venue key a reducer is created and using hashmap the publication count is calculated based on  the number of times it appears in the reducers value list and sorted to find the highest number of authors for list of publication in each venue
+     
+5)  co_author_count_highest_lowest (CoAuthorCount)
+     
+     - For this job only one reducer is set and cleanup() function is used to sort the final list
+     
+     - The cleanup function is findind the top 100 and bottom 100 and writing to the same csv file
+     
+     - The map will emit (author,co-author) tuple : example author1 and author2 exits in the xml element then the map function will emit (auhtor1,author2) and vice-versa
+     
+     - To the reducer the input will be (author,list(co-author)) and using hashmap the author and it's co-author list length is stored and sorting happens in  the cleanup function.
+     
+        
+### Note for Credits
+    
+    - The XMLPublicationInputFormat was written referring to [Pramodh Acharya Implementation](https://github.com/pramo31/MapReduce-DBLPDataSet/blob/master/src/main/scala/com/cloud/mapreduce/paser/XmlInputFormat.scala) and standard XMLinput from Mahout's. 
+    
+### Future Improvements
+
+    - Should improve the code that writes the data into CSV file now I'm using input IOUtils
        
    
 
